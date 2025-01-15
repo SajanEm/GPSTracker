@@ -28,5 +28,3 @@ doxygen-warning-log.txt
 
 # to include anyway
 !.gitignore
-/target
-/target
