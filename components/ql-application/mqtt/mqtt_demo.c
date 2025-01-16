@@ -48,16 +48,16 @@ static ql_task_t mqtt_task = NULL;
 
 #define USE_CRT_BUFFER 0
 
-#define MQTT_CLIENT_QUECTEL_URL "mqtt://em.mqtt.emotorad.com:1883"
+#define MQTT_CLIENT_QUECTEL_URL "mqtt://em.stage.mqtt.emotorad.com:1883"
 #define MQTT_CLIENT_ONENET_URL "mqtts://em.mqtt.emotorad.com:8883" // onenet 的ip地址
 
 // mqtts://em.mqtt.emotorad.com:8883
 #if USE_CRT_BUFFER
 #define MQTT_CLIENT_QUECTEL_SSL_URL "mqtts://112.31.84.164:8308"
 #else
-#define MQTT_CLIENT_QUECTEL_SSL_URL "mqtts://em.mqtt.emotorad.com:8883"
+#define MQTT_CLIENT_QUECTEL_SSL_URL "mqtts://em.stage.mqtt.emotorad.com:8883"
 #endif
-#define MQTT_CLIENT_ONENET_SSL_URL "mqtts://em.mqtt.emotorad.com:8883" // onenet 的ip地址
+#define MQTT_CLIENT_ONENET_SSL_URL "mqtts://em.stage.mqtt.emotorad.com:8883" // onenet 的ip地址
 
 // publist 的内容
 #define MQTT_PUB_MSG0 "{\"id\": 000000,\"dp\": {\"temperatrue\": [{\"v\": 0.001,}],\"power\": [{\"v\": 0.001,}]}}"
@@ -198,10 +198,6 @@ static void mqtt_inpub_data_cb(mqtt_client_t *client, void *arg, int pkt_id, con
 {
 	QL_MQTT_LOG("topic name the message was received on: %s", topic);
 	QL_MQTT_LOG("payload that was received: %s", payload);
-
-
-
-
 
 }
 
@@ -540,13 +536,13 @@ static void mqtt_app_thread(void * arg)
 				encodedCore = (unsigned char *)encodingString; //"Longitude:%lf,Latitude:%lf,ID:123,longitu);
 				sendBikePacket = base64Encoder(encodedCore);
 
-    			if(ql_mqtt_sub_unsub(&mqtt_cli, "topic/telemetry/gps/live", 1, mqtt_requst_result_cb,NULL, 1) == MQTTCLIENT_WOUNDBLOCK)
+    			if(ql_mqtt_sub_unsub(&mqtt_cli, "topic/telemetry/gps/revert", 1, mqtt_requst_result_cb,NULL, 1) == MQTTCLIENT_WOUNDBLOCK)
 				{
     				QL_MQTT_LOG("======wait subscrible result");
     				ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
     			}
 
-    			if(ql_mqtt_publish(&mqtt_cli, "topic/telemetry/gps/live", sendBikePacket, strlen(sendBikePacket), 0, 0, mqtt_requst_result_cb,NULL) == MQTTCLIENT_WOUNDBLOCK){
+    			if(ql_mqtt_publish(&mqtt_cli, "topic/telemetry/gps/revert", sendBikePacket, strlen(sendBikePacket), 0, 0, mqtt_requst_result_cb,NULL) == MQTTCLIENT_WOUNDBLOCK){
     				QL_MQTT_LOG("======wait publish result");
     				ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
     			}
@@ -585,7 +581,6 @@ exit:
 
    return;	
 }
-
 
 int ql_mqtt_app_init(void)
 {
