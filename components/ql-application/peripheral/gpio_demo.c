@@ -40,7 +40,7 @@ WHEN			  WHO		  WHAT, WHERE, WHY
 /*===========================================================================
  * Variate
  ===========================================================================*/
-static ql_gpio_cfg _ql_gpio_cfg[] =
+ql_gpio_cfg _ql_gpio_cfg[2] =
 {   /* gpio_num   gpio_dir     gpio_pull    gpio_lvl    */
     {  GPIO_1,   GPIO_OUTPUT,  0xff,        LVL_HIGH }    // set output high-level
 };

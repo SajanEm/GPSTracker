@@ -5,6 +5,8 @@ xml
 man
 /out/
 /.vscode/
+/target/EG800GCN_GB_APPIMAGE/app
+/target
 
 # top files to ignore
 /tags
@@ -28,3 +30,4 @@ doxygen-warning-log.txt
 
 # to include anyway
 !.gitignore
+

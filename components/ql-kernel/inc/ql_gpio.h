@@ -23,6 +23,8 @@ WHEN			  WHO		  WHAT, WHERE, WHY
 
 #include "ql_api_common.h"
 
+
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -31,6 +33,7 @@ extern "C" {
  * Macro Definition
  ===========================================================================*/
 #define QL_GPIO_ERRCODE_BASE (QL_COMPONENT_BSP_GPIO<<16)
+
 
 /*===========================================================================
  * Enum

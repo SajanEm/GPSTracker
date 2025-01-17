@@ -31,6 +31,8 @@ WHEN              WHO         WHAT, WHERE, WHY
 #include "quec_gnss_handle.h"
 #include "ql_gnss.h"
 #include "ql_gpio.h"
+#include "gpio_demo.h"
+
 
 
 #define QL_MQTT_LOG_LEVEL	            QL_LOG_LEVEL_INFO
@@ -68,6 +70,9 @@ static ql_task_t mqtt_task = NULL;
 
 static ql_sem_t  mqtt_semp;
 static int  mqtt_connected = 0;
+
+ql_GpioDir gpio_dir;
+ql_LvlMode  gpio_lvl;
 
 char encodingString[50];
 ql_gnss_data_t nmeaData;
@@ -171,8 +176,7 @@ NeSK2tDE/kM2APQa0qJg2yzJydY28f+45vPXScNcmfhlJ8wHd/aV\r\n\
 -----END RSA PRIVATE KEY-----";
 #endif
 
-
-
+extern ql_gpio_cfg _ql_gpio_cfg[1];
 
 static void mqtt_state_exception_cb(mqtt_client_t *client)
 {
@@ -196,27 +200,29 @@ static void mqtt_requst_result_cb(mqtt_client_t *client, void *arg,int err)
 	ql_rtos_semaphore_release(mqtt_semp);
 }
 
+
+
 static void mqtt_inpub_data_cb(mqtt_client_t *client, void *arg, int pkt_id, const char *topic, const unsigned char *payload, unsigned short payload_len)
 {
 	QL_MQTT_LOG("topic name the message was received on: %s", topic);
 	QL_MQTT_LOG("payload that was received: %s", payload);
 
 	gpio_dir  = GPIO_OUTPUT;
-        gpio_lvl  = LVL_HIGH;
+    gpio_lvl  = LVL_HIGH;
 
-            /* set output high */
-        ql_gpio_set_direction(_ql_gpio_cfg[0].gpio_num, gpio_dir);
-        ql_gpio_set_level(_ql_gpio_cfg[0].gpio_num, gpio_lvl);
+        /* set output high */
+    ql_gpio_set_direction(_ql_gpio_cfg[0].gpio_num, gpio_dir);
+    ql_gpio_set_level(_ql_gpio_cfg[0].gpio_num, gpio_lvl);
 
-        QL_GPIODEMO_LOG("gpio[%d] output high-level", _ql_gpio_cfg[0].gpio_num);
-        QL_GPIODEMO_LOG("gpio[%d] set dir:[%d], lvl:[%d]", _ql_gpio_cfg[0].gpio_num, gpio_dir, gpio_lvl);
+    // QL_GPIODEMO_LOG("gpio[%d] output high-level", _ql_gpio_cfg[0].gpio_num);
+    // QL_GPIODEMO_LOG("gpio[%d] set dir:[%d], lvl:[%d]", _ql_gpio_cfg[0].gpio_num, GPIO_OUTPUT, LVL_HIGH);
 
-        /* get output high */
-        ql_gpio_get_direction(_ql_gpio_cfg[0].gpio_num, &gpio_dir);
-        ql_gpio_get_level(_ql_gpio_cfg[0].gpio_num, &gpio_lvl);
+    /* get output high */
+    ql_gpio_get_direction(_ql_gpio_cfg[0].gpio_num, &gpio_dir);
+    ql_gpio_get_level(_ql_gpio_cfg[0].gpio_num, &gpio_lvl);
 
-        QL_GPIODEMO_LOG("gpio[%d] output high-level", _ql_gpio_cfg[0].gpio_num);
-        QL_GPIODEMO_LOG("gpio[%d] get dir:[%d], lvl:[%d]", _ql_gpio_cfg[0].gpio_num, gpio_dir, gpio_lvl);
+    // QL_GPIODEMO_LOG("gpio[%d] output high-level", _ql_gpio_cfg[0].gpio_num);
+    // QL_GPIODEMO_LOG("gpio[%d] get dir:[%d], lvl:[%d]", _ql_gpio_cfg[0].gpio_num, gpio_dir, LVL_HIGH);
 
 }
 
