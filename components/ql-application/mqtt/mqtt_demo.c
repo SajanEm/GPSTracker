@@ -542,10 +542,17 @@ static void mqtt_app_thread(void * arg)
     				ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
     			}
 
-    			if(ql_mqtt_publish(&mqtt_cli, "topic/telemetry/gps/revert", sendBikePacket, strlen(sendBikePacket), 0, 0, mqtt_requst_result_cb,NULL) == MQTTCLIENT_WOUNDBLOCK){
+    			if(ql_mqtt_publish(&mqtt_cli, "topic/telemetry/gps/live", sendBikePacket, strlen(sendBikePacket), 0, 0, mqtt_requst_result_cb,NULL) == MQTTCLIENT_WOUNDBLOCK){
     				QL_MQTT_LOG("======wait publish result");
     				ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
     			}
+
+				if(ql_mqtt_sub_unsub(&mqtt_cli, "topic/telemetry/gps/live", 1, mqtt_requst_result_cb,NULL, 0) == MQTTCLIENT_WOUNDBLOCK)
+				{
+    				QL_MQTT_LOG("======wait subscrible result");
+    				ql_rtos_semaphore_wait(mqtt_semp, QL_WAIT_FOREVER);
+    			}
+
     			test_num++;
     			ql_rtos_task_sleep_ms(500);
     		}
