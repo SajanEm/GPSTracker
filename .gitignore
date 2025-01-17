@@ -5,8 +5,7 @@ xml
 man
 /out/
 /.vscode/
-/target/EG800GCN_GB_APPIMAGE/app
-/target
+/target/
 
 # top files to ignore
 /tags
@@ -31,3 +30,47 @@ doxygen-warning-log.txt
 # to include anyway
 !.gitignore
 
+components/newlib/armca5/libql_newlib.a
+components/ql-application/mqtt/mqtt_demo.c
+target/EG800GCN_GB_APPIMAGE/8850CM_cat1_open.elf
+target/EG800GCN_GB_APPIMAGE/8850CM_cat1_open_APPIMAGE.pac
+target/EG800GCN_GB_APPIMAGE/8850CM_cat1_open_APPIMAGE_merge.pac
+target/EG800GCN_GB_APPIMAGE/app/APPIMAGE_APP.appimg
+target/EG800GCN_GB_APPIMAGE/app/APPIMAGE_APP.elf
+target/EG800GCN_GB_APPIMAGE/app/APPIMAGE_APP.img
+target/EG800GCN_GB_APPIMAGE/app/APPIMAGE_APP.img.chaincert
+target/EG800GCN_GB_APPIMAGE/app/APPIMAGE_APP.img.debugcert
+target/EG800GCN_GB_APPIMAGE/app/APPIMAGE_APP.img.enc
+target/EG800GCN_GB_APPIMAGE/app/APPIMAGE_APP.img.keycert
+target/EG800GCN_GB_APPIMAGE/app/APPIMAGE_APP.map
+target/EG800GCN_GB_APPIMAGE/app/APPIMAGE_APP.pac
+target/EG800GCN_GB_APPIMAGE/app/APPIMAGE_APP.sign.img
+target/EG800GCN_GB_APPIMAGE/prepack/8850CM_cat1_open.img
+target/EG800GCN_GB_APPIMAGE/prepack/8850CM_cat1_open.img.chaincert
+target/EG800GCN_GB_APPIMAGE/prepack/8850CM_cat1_open.img.debugcert
+target/EG800GCN_GB_APPIMAGE/prepack/8850CM_cat1_open.img.enc
+target/EG800GCN_GB_APPIMAGE/prepack/8850CM_cat1_open.img.keycert
+target/EG800GCN_GB_APPIMAGE/prepack/8850CM_cat1_open.sign.img
+target/EG800GCN_GB_APPIMAGE/prepack/8850CM_cat1bis_volte_ds_plus_ims_deltanv.cpio
+target/EG800GCN_GB_APPIMAGE/prepack/8850CM_cat1bis_volte_ds_plus_indeltanv.cpio
+target/EG800GCN_GB_APPIMAGE/prepack/8850CM_cat1bis_volte_ds_plus_modem.cpio
+target/EG800GCN_GB_APPIMAGE/prepack/8850CM_cat1bis_volte_ds_plus_nvitem.bin
+target/EG800GCN_GB_APPIMAGE/prepack/appimg_flash_delete.pac
+target/EG800GCN_GB_APPIMAGE/prepack/boot.img
+target/EG800GCN_GB_APPIMAGE/prepack/boot.img.chaincert
+target/EG800GCN_GB_APPIMAGE/prepack/boot.img.debugcert
+target/EG800GCN_GB_APPIMAGE/prepack/boot.img.enc
+target/EG800GCN_GB_APPIMAGE/prepack/boot.img.keycert
+target/EG800GCN_GB_APPIMAGE/prepack/boot.sign.img
+target/EG800GCN_GB_APPIMAGE/prepack/norfdl.img
+target/EG800GCN_GB_APPIMAGE/prepack/norfdl.img.chaincert
+target/EG800GCN_GB_APPIMAGE/prepack/norfdl.img.debugcert
+target/EG800GCN_GB_APPIMAGE/prepack/norfdl.img.enc
+target/EG800GCN_GB_APPIMAGE/prepack/norfdl.img.keycert
+target/EG800GCN_GB_APPIMAGE/prepack/norfdl.sign.img
+target/EG800GCN_GB_APPIMAGE/prepack/spl.img
+target/EG800GCN_GB_APPIMAGE/prepack/spl.img.chaincert
+target/EG800GCN_GB_APPIMAGE/prepack/spl.img.debugcert
+target/EG800GCN_GB_APPIMAGE/prepack/spl.img.enc
+target/EG800GCN_GB_APPIMAGE/prepack/spl.img.keycert
+target/EG800GCN_GB_APPIMAGE/prepack/spl.sign.img
