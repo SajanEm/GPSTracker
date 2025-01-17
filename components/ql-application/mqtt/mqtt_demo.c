@@ -536,6 +536,8 @@ static void mqtt_app_thread(void * arg)
 				encodedCore = (unsigned char *)encodingString; //"Longitude:%lf,Latitude:%lf,ID:123,longitu);
 				sendBikePacket = base64Encoder(encodedCore);
 
+				ql_mqtt_set_inpub_callback(&mqtt_cli, mqtt_inpub_data_cb, NULL);
+
     			if(ql_mqtt_sub_unsub(&mqtt_cli, "topic/telemetry/gps/revert", 1, mqtt_requst_result_cb,NULL, 1) == MQTTCLIENT_WOUNDBLOCK)
 				{
     				QL_MQTT_LOG("======wait subscrible result");
