@@ -214,6 +214,13 @@ static void mqtt_inpub_data_cb(mqtt_client_t *client, void *arg, int pkt_id, con
     ql_gpio_set_direction(_ql_gpio_cfg[0].gpio_num, gpio_dir);
     ql_gpio_set_level(_ql_gpio_cfg[0].gpio_num, gpio_lvl);
 
+	ql_rtos_task_sleep_s(5);
+
+    gpio_lvl  = LVL_LOW;
+
+	ql_gpio_set_level(_ql_gpio_cfg[0].gpio_num, gpio_lvl);
+
+
     // QL_GPIODEMO_LOG("gpio[%d] output high-level", _ql_gpio_cfg[0].gpio_num);
     // QL_GPIODEMO_LOG("gpio[%d] set dir:[%d], lvl:[%d]", _ql_gpio_cfg[0].gpio_num, GPIO_OUTPUT, LVL_HIGH);
 
