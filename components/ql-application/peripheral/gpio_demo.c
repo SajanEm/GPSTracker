@@ -42,7 +42,6 @@ WHEN			  WHO		  WHAT, WHERE, WHY
  ===========================================================================*/
 static ql_gpio_cfg _ql_gpio_cfg[] =
 {   /* gpio_num   gpio_dir     gpio_pull    gpio_lvl    */
-    {  GPIO_0,   GPIO_INPUT,   PULL_DOWN,   0xff     },   // set input pull-down
     {  GPIO_1,   GPIO_OUTPUT,  0xff,        LVL_HIGH }    // set output high-level
 };
 
@@ -75,9 +74,6 @@ static void ql_gpio_demo_thread(void *param)
     /* init demo gpio array */
     ql_pin_set_func(QL_TEST1_PIN_GPIO0, QL_TEST1_PIN_GPIO0_FUNC_GPIO);      // TEST1_PIN set GPIO0
     ql_pin_set_func(QL_TEST1_PIN_GPIO1, QL_TEST1_PIN_GPIO1_FUNC_GPIO);      // TEST1_PIN set GPIO1
-
-    ql_pin_set_func(QL_TEST2_PIN_GPIO0, QL_TEST2_PIN_GPIO0_FUNC_LCD_SIO);   // TEST2_PIN set spi_lcd_sio
-    ql_pin_set_func(QL_TEST2_PIN_GPIO1, QL_TEST2_PIN_GPIO1_FUNC_LCD_SDC);   // TEST2_PIN set spi_lcd_sdc
 
     _ql_gpio_demo_init();
 

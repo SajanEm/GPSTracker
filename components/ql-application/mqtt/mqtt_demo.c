@@ -30,6 +30,8 @@ WHEN              WHO         WHAT, WHERE, WHY
 #include "ql_ssl.h"
 #include "quec_gnss_handle.h"
 #include "ql_gnss.h"
+#include "ql_gpio.h"
+
 
 #define QL_MQTT_LOG_LEVEL	            QL_LOG_LEVEL_INFO
 #define QL_MQTT_LOG(msg, ...)			QL_LOG(QL_MQTT_LOG_LEVEL, "ql_MQTT", msg, ##__VA_ARGS__)
@@ -198,6 +200,23 @@ static void mqtt_inpub_data_cb(mqtt_client_t *client, void *arg, int pkt_id, con
 {
 	QL_MQTT_LOG("topic name the message was received on: %s", topic);
 	QL_MQTT_LOG("payload that was received: %s", payload);
+
+	gpio_dir  = GPIO_OUTPUT;
+        gpio_lvl  = LVL_HIGH;
+
+            /* set output high */
+        ql_gpio_set_direction(_ql_gpio_cfg[0].gpio_num, gpio_dir);
+        ql_gpio_set_level(_ql_gpio_cfg[0].gpio_num, gpio_lvl);
+
+        QL_GPIODEMO_LOG("gpio[%d] output high-level", _ql_gpio_cfg[0].gpio_num);
+        QL_GPIODEMO_LOG("gpio[%d] set dir:[%d], lvl:[%d]", _ql_gpio_cfg[0].gpio_num, gpio_dir, gpio_lvl);
+
+        /* get output high */
+        ql_gpio_get_direction(_ql_gpio_cfg[0].gpio_num, &gpio_dir);
+        ql_gpio_get_level(_ql_gpio_cfg[0].gpio_num, &gpio_lvl);
+
+        QL_GPIODEMO_LOG("gpio[%d] output high-level", _ql_gpio_cfg[0].gpio_num);
+        QL_GPIODEMO_LOG("gpio[%d] get dir:[%d], lvl:[%d]", _ql_gpio_cfg[0].gpio_num, gpio_dir, gpio_lvl);
 
 }
 
